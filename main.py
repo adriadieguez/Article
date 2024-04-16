@@ -1,5 +1,5 @@
-from config.reading_konsole import reading 
-from utils.utils import matrix_generation
+from config.inputs import reading 
+from utils.matrix_generation import matrix_generation
 
 _, __, ___, ____ = reading()
 case = __ 

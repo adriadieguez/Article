@@ -6,6 +6,9 @@ from sympy import symbols, Eq, solve
 import numpy as np
 import sympy as sp
 
+from utils.generate_sequences import generate_sequences
+from utils.get_matrix_from_dict import get_matrix_from_dict
+
 class Edge:
     def __init__(self, edge, transition_matrix=None):
         self.edge = edge
@@ -16,17 +19,6 @@ class MM:
         self.source = source
         self.target = target
         self.matrix = matrix
-
-def get_matrix_from_dict(d):
-    """
-    Returns a 4x4 matrix given a dictionary with 16 values
-    """
-    Q2 = np.zeros((4,4))
-    coefficients = list(d.values())
-    for i in range(4):
-        for j in range(4):
-            Q2[i,j] = coefficients[i*4+j]
-    return Q2
 
 def generate_alignment(length, distribution):
     """
@@ -66,10 +58,7 @@ def get_M2(new_distribution,d2, l):
         for i in range(4):
             for j in range(4):
                 if i == j:
-                    sum = 0
-                    for k in range(4):
-                        if k != i:
-                            sum += (Q[i,k] * (1 - alpha(new_distribution,Q,i,k)))
+                    sum = np.sum((Q[i,k] * (1 - alpha(new_distribution,Q,i,k))) for k in range(4) if k != i)
                     P[i,j] = Q[i,i] + sum
                 else:
                     P[i,j] = Q[i,j]*alpha(new_distribution,Q,i,j)
@@ -139,19 +128,3 @@ def generate_random_matrix(distribution, l):
     M = np.matmul(M1,M2)
     return M
 
-def generate_sequences(M, seq):
-    """
-    Given the sequence seq of the ancestor node and the transition matrix M,
-    returns the sequence of the descendant node
-    """
-    new_seq = ""
-    for s in seq:
-        if s == "A":
-            new_seq += np.random.choice(['A', 'G', 'C', 'T'], p=M[0,:])
-        elif s == "G":
-            new_seq += np.random.choice(['A', 'G', 'C', 'T'], p=M[1,:])
-        elif s == "C":
-            new_seq += np.random.choice(['A', 'G', 'C', 'T'], p=M[2,:])
-        else:
-            new_seq += np.random.choice(['A', 'G', 'C', 'T'], p=M[3,:])
-    return new_seq
