@@ -11,13 +11,13 @@ def main():
     repetitions = 50
     total_time = 0
 
-    command1 = "python3 GenGM_orig.py tree_4L.txt 10 1000"
+    command1 = 'python3 main.py tree_4L.txt 5 1000 random diff_aligns'
 
-    for _ in range(repetitions):
-        total_time1 += run_command(command1)
+    for i in range(repetitions):
+        print(i)
+        total_time += run_command(command1)
 
-    avg_time1 = total_time1 / repetitions
-    avg_time2 = total_time2 / repetitions
+    avg_time1 = total_time / repetitions
 
     print("Average execution time:", avg_time1, "seconds")
   

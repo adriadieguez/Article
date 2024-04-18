@@ -5,8 +5,8 @@ _, case, __, ___, root_distr, name = reading()
 
 if (case == 1):
     tree = _
-    L = __
-    t = ___
+    t = __
+    L = ___
     matrix_generation(tree, L, t, None, case, root_distr, name)
 else:
     tree = _
