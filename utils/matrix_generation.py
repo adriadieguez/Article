@@ -9,7 +9,7 @@ from utils.generate_transition_matrices import generate_transition_matrices
 from utils.save_transition_matrices import save_transition_matrices
 from utils.generate_alignments import generate_alignments
 
-def matrix_generation(tree, length, t, lengths, case):
+def matrix_generation(tree, length, t, lengths, case, name):
     """
     Main function to generate transition matrices and alignments.
     """
@@ -22,4 +22,4 @@ def matrix_generation(tree, length, t, lengths, case):
     net = Phylo.to_networkx(tree)
     edges = generate_transition_matrices(net, node_distribution)
     save_transition_matrices(edges)
-    return generate_alignments(net, node_distribution, edges, length, t, case, lengths)
+    return generate_alignments(net, node_distribution, edges, length, t, case, lengths, name)

@@ -3,12 +3,13 @@ import numpy as np
 import os
 import tarfile
 
-def generate_alignments(net, node_distribution, edges, length, t, case, lengths):
+def generate_alignments(net, node_distribution, edges, length, t, case, lengths, name):
     """
     Generates alignments based on the given parameters and saves them in FASTA files.
     """
     file_names = []
-    tar = tarfile.open("output_files/alignments.tar.gz", "w:gz")
+    tar_file = "output_files/" + name + "_alignments.tar.gz"
+    tar = tarfile.open(tar_file, "w:gz")
 
     if case == 1:
         for align in range(t):
