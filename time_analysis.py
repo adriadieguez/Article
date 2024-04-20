@@ -11,7 +11,7 @@ def main():
     repetitions = 50
     total_time = 0
 
-    command1 = 'python3 main.py tree_4L.txt 5 1000 random diff_aligns'
+    command1 = 'python3 main.py tree_4L.txt 5 10000 random a_b_01_1000'
 
     for i in range(repetitions):
         print(i)

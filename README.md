@@ -13,3 +13,21 @@ For example, L1 = 500, L2 = 1000 and L3 = 10000;
 ```python3 main.py tree_4L.txt L500 L1000 L10000 name_experiment```
 
 
+## Experiments: Martí 
+4 branches: generating 5 fasta files for the following scenarios:
+
+* length 1000: 
+
+$a=b=0.1$ Average execution time: 1.4265469598770142 seconds,
+
+$a=b=0.5$ Average execution time: 3.0718810176849365 seconds
+
+---
+
+* length 10000: 
+
+$a=b=0.1$ Average execution time: 2.9485430765151976 seconds, 
+
+$a=b=0.5$ Average execution time: 2.9974852848052977 seconds
+
+
