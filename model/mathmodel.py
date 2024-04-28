@@ -28,13 +28,20 @@ def generate_alignment(length, distribution):
     seq = np.random.choice(nucleotides, size=length, p=distribution)
     return ''.join(seq)
 
-
 def alpha(new_distribution, Q, i, k):
     """
     Returns the parameter alpha of the Metropolis - Hastings algorithm
     """
     ratio = new_distribution[k] * Q[k, i] / (new_distribution[i] * Q[i, k])
     return min(1, ratio)
+
+def DLC(matrix):
+    B = True
+    for j in range(matrix.shape[1]):
+        max_index = np.argmax(matrix[:, j])
+        if max_index != j:
+            B = False
+    return B
 
 def get_M2(new_distribution,d2, l, dir_constant):
     """
@@ -79,13 +86,13 @@ def get_M2(new_distribution,d2, l, dir_constant):
         
         # We only want the real solution between 0 and 1
         for s in sol:
-            if s.is_real and 0 < s < 1:
+            if s.is_real and -1 < s < 1:
                 a = np.float64(s)
                 M2 = (1-a)*P + a*np.identity(4)
                 iter = False
                 break
             elif s.is_complex: #If imaginary part is negligible
-                if np.abs(np.imag(s)) < 10**-20 and 0 < sp.re(s) < 1:
+                if np.abs(np.imag(s)) < 10**-15 and -1 < sp.re(s) < 1:
                     a = np.float64(sp.re(s))
                     M2 = (1-a)*P + a*np.identity(4)
                     iter = False
@@ -97,9 +104,9 @@ def find_k(distribution, l, sq_det_D, exp_minus_l):
     Finds a suitable value of k to satisfy the condition
     detM1 > np.exp(-l)*np.sqrt(np.linalg.det(D_))/np.sqrt(np.linalg.det(D)).
     """
-    epsilon = 1e-3  # Desired precision
-    lower_bound = 1
-    upper_bound = 100  # Adjust upper bound as needed
+    epsilon = 1e-2  # Desired precision
+    lower_bound = 2.5
+    upper_bound = 25  # Adjust upper bound as needed
     
     while upper_bound - lower_bound > epsilon:
         M1 = np.zeros((4,4))
@@ -167,7 +174,13 @@ def generate_random_matrix(distribution, l):
     M2 = get_M2(new_distribution,d2,l,dir_constant)
     detM2 = np.linalg.det(M2)
     assert(np.abs(detM2 - d2) < 10**-6)
-
     M = np.matmul(M1,M2)
+
+    while not DLC(M):
+        M2 = get_M2(new_distribution,d2,l,dir_constant)
+        detM2 = np.linalg.det(M2)
+        assert(np.abs(detM2 - d2) < 10**-6)
+        M = np.matmul(M1,M2)
+    
     return M
 
