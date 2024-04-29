@@ -27,7 +27,11 @@ def matrix_generation(tree, length, t, lengths, case, root_distr, name):
     tree = tree_file.read()
     tree = Phylo.read(StringIO(tree), "newick")
     rename_nodes(tree)
+    # Write the tree in our format to latter save it at the top of the matrix file
+    newick_with_labels = StringIO()
+    Phylo.write(tree, newick_with_labels, "newick", format_branch_length='%0.2f')
+    newick_with_labels_str = newick_with_labels.getvalue()
     net = Phylo.to_networkx(tree)
     edges = generate_transition_matrices(net, node_distribution)
-    save_transition_matrices(edges, name)
+    save_transition_matrices(edges, name, newick_with_labels_str)
     return generate_alignments(net, node_distribution, edges, length, t, case, lengths, name)
