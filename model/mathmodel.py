@@ -86,13 +86,13 @@ def get_M2(new_distribution,d2, l, dir_constant):
         
         # We only want the real solution between 0 and 1
         for s in sol:
-            if s.is_real and -1 < s < 1:
+            if s.is_real and 0 < s < 1:
                 a = np.float64(s)
                 M2 = (1-a)*P + a*np.identity(4)
                 iter = False
                 break
             elif s.is_complex: #If imaginary part is negligible
-                if np.abs(np.imag(s)) < 10**-15 and -1 < sp.re(s) < 1:
+                if np.abs(np.imag(s)) < 10**-15 and 0 < sp.re(s) < 1:
                     a = np.float64(sp.re(s))
                     M2 = (1-a)*P + a*np.identity(4)
                     iter = False
