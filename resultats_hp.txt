@@ -1,0 +1,12 @@
+4 leaves - Branch length 0.1 - Alignment length 1000 || Avg Time: 2.34 seconds
+4 leaves - Branch length 0.1 - Alignment length 10000 || Avg Time: 2.81 seconds
+4 leaves - Branch length 0.5 - Alignment length 1000 || Avg Time: 6.35 seconds
+4 leaves - Branch length 0.5 - Alignment length 10000 || Avg Time: 3.03 seconds
+8 leaves - Branch length 0.1 - Alignment length 1000 || Avg Time: 4.29 seconds
+8 leaves - Branch length 0.1 - Alignment length 10000 || Avg Time: 5.51 seconds
+8 leaves - Branch length 0.5 - Alignment length 1000 || Avg Time: 7.83 seconds
+8 leaves - Branch length 0.5 - Alignment length 10000 || Avg Time: 6.95 seconds
+16 leaves - Branch length 0.1 - Alignment length 1000 || Avg Time: 8.19 seconds
+16 leaves - Branch length 0.1 - Alignment length 10000 || Avg Time: 11.22 seconds
+16 leaves - Branch length 0.5 - Alignment length 1000 || Avg Time: 11.16 seconds
+16 leaves - Branch length 0.5 - Alignment length 10000 || Avg Time: 15.90 seconds

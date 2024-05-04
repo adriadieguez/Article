@@ -35,18 +35,11 @@ def alpha(new_distribution, Q, i, k):
     ratio = new_distribution[k] * Q[k, i] / (new_distribution[i] * Q[i, k])
     return min(1, ratio)
 
-def DLC(matrix):
-    B = True
-    for j in range(matrix.shape[1]):
-        max_index = np.argmax(matrix[:, j])
-        if max_index != j:
-            B = False
-    return B
-
 def get_M2(new_distribution,d2, l, dir_constant):
     """
     Metropolis - Hastings implementation to get M2
     """
+    #print("Computing M2")
     P = np.zeros((4,4))
     iter = True
 
@@ -82,9 +75,11 @@ def get_M2(new_distribution,d2, l, dir_constant):
         vaps = sorted(vaps, reverse=True)
         A = symbols('A')
         eq = Eq(-d2+(((1-A)*vaps[1]+A)*((1-A)*vaps[2]+A)*((1-A)*vaps[3]+A)),0)
+        #print("Before solving")
         sol = solve(eq, A)
-        
+        #print("Solved")
         # We only want the real solution between 0 and 1
+        #print(sol)
         for s in sol:
             if s.is_real and 0 <= s <= 1:
                 a = np.float64(s)
@@ -140,6 +135,7 @@ def generate_random_matrix(distribution, l):
     and the distribution at the ancestor node.
     """
 
+    #print("Computing M1")
     D = np.diag(distribution)
     sq_det_D = np.sqrt(np.linalg.det(D))
     exp_minus_l = np.exp(-l)
@@ -170,17 +166,12 @@ def generate_random_matrix(distribution, l):
         if detM1 <= res:
             res = 1
 
+    #print("M1 got")
     d2 = res * (1 / detM1)
     M2 = get_M2(new_distribution,d2,l,dir_constant)
     detM2 = np.linalg.det(M2)
     assert(np.abs(detM2 - d2) < 10**-6)
     M = np.matmul(M1,M2)
-
-    while not DLC(M):
-        M2 = get_M2(new_distribution,d2,l,dir_constant)
-        detM2 = np.linalg.det(M2)
-        assert(np.abs(detM2 - d2) < 10**-6)
-        M = np.matmul(M1,M2)
-    
+    #print("M computed")
     return M
 
