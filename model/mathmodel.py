@@ -86,13 +86,13 @@ def get_M2(new_distribution,d2, l, dir_constant):
         
         # We only want the real solution between 0 and 1
         for s in sol:
-            if s.is_real and 0 < s < 1:
+            if s.is_real and 0 <= s <= 1:
                 a = np.float64(s)
                 M2 = (1-a)*P + a*np.identity(4)
                 iter = False
                 break
             elif s.is_complex: #If imaginary part is negligible
-                if np.abs(np.imag(s)) < 10**-15 and 0 < sp.re(s) < 1:
+                if np.abs(np.imag(s)) < 10**-9 and 0 <= sp.re(s) <= 1:
                     a = np.float64(sp.re(s))
                     M2 = (1-a)*P + a*np.identity(4)
                     iter = False
@@ -104,7 +104,7 @@ def find_k(distribution, l, sq_det_D, exp_minus_l):
     Finds a suitable value of k to satisfy the condition
     detM1 > np.exp(-l)*np.sqrt(np.linalg.det(D_))/np.sqrt(np.linalg.det(D)).
     """
-    epsilon = 1e-2  # Desired precision
+    epsilon = 1e-3  # Desired precision
     lower_bound = 2.5
     upper_bound = 25  # Adjust upper bound as needed
     
