@@ -41,10 +41,10 @@ def get_M2(new_distribution,d2, l, dir_constant):
     """
     #print("Computing M2")
     P = np.zeros((4,4))
+    iteration = 0
     iter = True
 
-    while iter:
-
+    while iter and iteration < 50:
         # Random Markov matrix generation
         Q = np.zeros((4,4))
         i=0
@@ -92,7 +92,12 @@ def get_M2(new_distribution,d2, l, dir_constant):
                     M2 = (1-a)*P + a*np.identity(4)
                     iter = False
                     break
-    return M2
+        iteration += 1
+    
+    if iteration == 50:
+        return 0
+    else: 
+        return M2
 
 def find_k(distribution, l, sq_det_D, exp_minus_l):
     """
@@ -166,12 +171,17 @@ def generate_random_matrix(distribution, l):
         if detM1 <= res:
             res = 1
 
+
     #print("M1 got")
     d2 = res * (1 / detM1)
     M2 = get_M2(new_distribution,d2,l,dir_constant)
-    detM2 = np.linalg.det(M2)
-    assert(np.abs(detM2 - d2) < 10**-6)
-    M = np.matmul(M1,M2)
-    #print("M computed")
-    return M
+
+    if not isinstance(M2, np.ndarray) and M2 == 0:
+        return np.zeros((4,4))
+    else:
+        detM2 = np.linalg.det(M2)
+        assert(np.abs(detM2 - d2) < 10**-6)
+        M = np.matmul(M1,M2)
+        #print("M computed")
+        return M
 
