@@ -1,0 +1,47 @@
+IQ-TREE multicore version 2.3.2 COVID-edition for Windows 64-bit built Apr  9 2024
+Developed by Bui Quang Minh, James Barbetti, Nguyen Lam Tung,
+Olga Chernomor, Heiko Schmidt, Dominik Schrempf, Michael Woodhams, Ly Trong Nhan, Thomas Wong
+
+Host:    LAPTOP-0F109KKS (AVX512, FMA3, 7 GB RAM)
+Command: C:\Users\diegu\Desktop\Programes\IQTREE\iqtree-2.3.2-Windows\bin\iqtree2.exe -s output_files\IQTTREE_Analysis\0.1 Length1000\4_leaves_1000length_sequences_num1.fasta -m 012345 -z tree_4L_nolengths.txt --redo
+Seed:    634402 (Using SPRNG - Scalable Parallel Random Number Generator)
+Time:    Sun May 19 11:53:41 2024
+Kernel:  AVX+FMA - 1 threads (4 CPU cores detected)
+
+HINT: Use -nt option to specify number of threads because your CPU has 4 cores!
+HINT: -nt AUTO will automatically determine the best number of threads to use.
+
+Reading alignment file output_files\IQTTREE_Analysis\0.1 Length1000\4_leaves_1000length_sequences_num1.fasta ... Fasta format detected
+Reading fasta file: done in 0.0001255 secs
+Alignment most likely contains DNA/RNA sequences
+Alignment has 4 sequences with 1000 columns, 102 distinct patterns
+94 parsimony-informative, 296 singleton sites, 610 constant sites
+           Gap/Ambiguity  Composition  p-value
+Analyzing sequences: done in 7.40006e-006 secs
+   1  SeqLeaf_1    0.00%    passed     23.89%
+   2  SeqLeaf_2    0.00%    passed     78.89%
+   3  SeqLeaf_3    0.00%    passed     96.37%
+   4  SeqLeaf_4    0.00%    passed     47.81%
+****  TOTAL        0.00%  0 sequences failed composition chi2 test (p-value<5%; df=3)
+
+Create initial parsimony tree by phylogenetic likelihood library (PLL)... 0.000 seconds
+
+NOTE: 0 MB RAM (0 GB) is required!
+Estimate model parameters (epsilon = 0.100)
+1. Initial log-likelihood: -3306.126
+2. Current log-likelihood: -3299.900
+Optimal log-likelihood: -3299.895
+Rate parameters:  A-C: 1.24129  A-G: 1.57250  A-T: 1.12207  C-G: 1.46292  C-T: 1.59709  G-T: 1.00000
+Base frequencies:  A: 0.271  C: 0.226  G: 0.286  T: 0.217
+Parameters optimization took 2 rounds (0.001 sec)
+Wrote distance file to... 
+Computing ML distances based on estimated model parameters...
+Calculating distance matrix: done in 6.98001e-005 secs
+Computing ML distances took 0.000308 sec (of wall-clock time) 0.000000 sec (of CPU time)
+Setting up auxiliary I and S matrices: done in 3.71002e-005 secs
+Computing RapidNJ tree took 0.000185 sec (of wall-clock time) 0.000000 sec (of CPU time)
+Log-likelihood of RapidNJ tree: -3299.895
+--------------------------------------------------------------------
+|             INITIALIZING CANDIDATE TREE SET                      |
+--------------------------------------------------------------------
+Generating 99 parsimony trees... 

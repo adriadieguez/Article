@@ -1,0 +1,117 @@
+IQ-TREE 2.3.2 COVID-edition built Apr  9 2024
+
+Input file name: output_files\IQTTREE_Analysis\0.5 Length1000\4_leaves_1000length_sequences_num1.fasta
+Type of analysis: tree reconstruction
+Random seed number: 989534
+
+REFERENCES
+----------
+
+To cite IQ-TREE please use:
+
+Bui Quang Minh, Heiko A. Schmidt, Olga Chernomor, Dominik Schrempf,
+Michael D. Woodhams, Arndt von Haeseler, and Robert Lanfear (2020)
+IQ-TREE 2: New models and efficient methods for phylogenetic inference
+in the genomic era. Mol. Biol. Evol., in press.
+https://doi.org/10.1093/molbev/msaa015
+
+SEQUENCE ALIGNMENT
+------------------
+
+Input data: 4 sequences with 1000 nucleotide sites
+Number of constant sites: 123 (= 12.3% of all sites)
+Number of invariant (constant or ambiguous constant) sites: 123 (= 12.3% of all sites)
+Number of parsimony informative sites: 159
+Number of distinct site patterns: 227
+
+SUBSTITUTION PROCESS
+--------------------
+
+Model of substitution: 012345+F
+
+Rate parameter R:
+
+  A-C: 0.7335
+  A-G: 0.9596
+  A-T: 0.9124
+  C-G: 0.9508
+  C-T: 0.4019
+  G-T: 1.0000
+
+State frequencies: (empirical counts from alignment)
+
+  pi(A) = 0.245
+  pi(C) = 0.2577
+  pi(G) = 0.241
+  pi(T) = 0.2562
+
+Rate matrix Q:
+
+  A    -1.063    0.3073    0.3759      0.38
+  C    0.2921   -0.8319    0.3724    0.1674
+  G    0.3821    0.3983    -1.197    0.4165
+  T    0.3633    0.1684    0.3917   -0.9234
+
+Model of rate heterogeneity: Uniform
+
+MAXIMUM LIKELIHOOD TREE
+-----------------------
+
+Log-likelihood of the tree: -5196.9221 (s.e. 28.5637)
+Unconstrained log-likelihood (without tree): -4982.2244
+Number of free parameters (#branches + #model parameters): 13
+Akaike information criterion (AIC) score: 10419.8443
+Corrected Akaike information criterion (AICc) score: 10420.2135
+Bayesian information criterion (BIC) score: 10483.6451
+
+Total tree length (sum of branch lengths): 2.3914
+Sum of internal branch lengths: 0.5817 (24.3223% of tree length)
+
+NOTE: Tree is UNROOTED although outgroup taxon 'SeqLeaf_1' is drawn at root
+
++-------------------------------------SeqLeaf_1
+|
++----------------------SeqLeaf_2
+|
+|                                 +------------------------SeqLeaf_3
++---------------------------------|
+                                  +--------------------SeqLeaf_4
+
+Tree in newick format:
+
+(SeqLeaf_1:0.6369356732,SeqLeaf_2:0.3963713976,(SeqLeaf_3:0.4205366704,SeqLeaf_4:0.3559308058):0.5816500314);
+
+
+USER TREES
+----------
+
+See output_files\IQTTREE_Analysis\0.5 Length1000\4_leaves_1000length_sequences_num1.fasta.trees for trees with branch lengths.
+
+Tree      logL    deltaL
+-------------------------
+  1 -5196.922261       0
+
+
+ALISIM COMMAND
+--------------
+To simulate an alignment of the same length as the original alignment, using the tree and model parameters estimated from this analysis, you can use the following command:
+
+--alisim simulated_MSA -t output_files\IQTTREE_Analysis\0.5 Length1000\4_leaves_1000length_sequences_num1.fasta.treefile -m "012345{0.733505,0.959635,0.912441,0.950769,0.401949}+F{0.245,0.25775,0.241,0.25625}" --length 1000
+
+To mimic the alignment used to produce this analysis, i.e. simulate an alignment of the same length as the original alignment, using the tree and model parameters estimated from this analysis *and* copying the same gap positions as the original alignment, you can use the following command:
+
+iqtree -s output_files\IQTTREE_Analysis\0.5 Length1000\4_leaves_1000length_sequences_num1.fasta --alisim mimicked_MSA
+
+To simulate any number of alignments in either of the two commandlines above, use the --num-alignments options, for example mimic 100 alignments you would use the command line:
+
+iqtree -s output_files\IQTTREE_Analysis\0.5 Length1000\4_leaves_1000length_sequences_num1.fasta --alisim mimicked_MSA --num-alignments 100
+
+For more information on using AliSim, please visit: www.iqtree.org/doc/AliSim
+
+TIME STAMP
+----------
+
+Date and time: Sun May 19 11:43:20 2024
+Total CPU time used: 0.0625 seconds (0h:0m:0s)
+Total wall-clock time used: 0.098257 seconds (0h:0m:0s)
+
