@@ -148,9 +148,10 @@ def generate_random_matrix(distribution, l):
     dir_constant = (k*np.exp(-l/4))/(np.sqrt(l/4))
     
     res = 1
+    iteration = 1
 
     # Compute M1
-    while res >= 1:
+    while res >= 1 and iteration < 50:
         M1 = np.zeros((4,4))
         i=0
         while i<4:
@@ -170,7 +171,8 @@ def generate_random_matrix(distribution, l):
         #If detM1 > res and res < 1, conditions are met. Otherwise, a new iteration.
         if detM1 <= res:
             res = 1
-
+        
+        iteration += 1
 
     #print("M1 got")
     d2 = res * (1 / detM1)
