@@ -9,7 +9,7 @@ Our program takes as input a tree in the Newick format (with nodes of any degree
 ```diff
 ! tryy
 ```
-<code style="color : name_color">text</code>
+<code style="color : blue">text</code>
 
 **Option 1:** <span style="color:blue"> Generate $N$ FASTA files with alignments of length $L$ given a tree in a newick format, providing an experiment name </span>
 
