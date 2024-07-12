@@ -4,6 +4,8 @@
 
 ---
 
+**GenPhylo** generates synthetic alignments on a phylogenetic tree with given branch lengths.
+
 The user has two options depending on which arguments are chosen. But both possibilities need to take as input a tree in the Newick format (with nodes of any degree) with annotated branch lengths.
 
 ▶️ **Option 1: Generate $N$ FASTA files with alignments of length $L$ given a tree in a Newick format, providing an experiment name**
