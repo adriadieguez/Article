@@ -4,24 +4,26 @@
 
 ---
 
-Our program takes as input a tree in the Newick format (with nodes of any degree) with annotated branch lengths. Moreover, other arguments must be given: the user has two possible options depending on which arguments are chosen,
+The user has two options depending on which arguments are chosen. But both possibilities need to take as input a tree in the Newick format (with nodes of any degree) with annotated branch lengths.
+
+▶️ **Option 1: Generate $N$ FASTA files with alignments of length $L$ given a tree in a Newick format, providing an experiment name**
+
+For example, for $N = 5$ and $L = 1000$, provided also a Newick tree in a ```.txt``` file and an experiment's name to save the results; just type
 
 ```diff
-! tryy
+python3 main.py <tree.txt> 5 1000 <name_experiment>
 ```
-<code style="color : blue">text</code>
 
-**Option 1:** <span style="color:blue"> Generate $N$ FASTA files with alignments of length $L$ given a tree in a newick format, providing an experiment name </span>
+▶️ **Option 2: Generate FASTA files with alignments of given lengths $L_1,...,L_d$ given a tree in a Newick format, providing also an experiment name**
 
-For example, for $N = 5$ and $L = 1000$;
-```python3 main.py tree_4L.txt 5 1000 name_experiment```
+For example, for $L_1 = 500$, $L_2 = 1000$ and $L_3 = 10000$, provided also a Newick tree in a ```.txt``` file and an experiment's name to save the results; just type
 
-**Option 2: Generate FASTA files with alignments of given lengths L1...Ld given a tree in a newick format, giving also an experiment name. Note that in this case, sequence lengths are preceeded by an L**
+```diff
+python3 main.py <tree.txt> L500 L1000 L10000 <name_experiment>
+```
 
-For example, L1 = 500, L2 = 1000 and L3 = 10000;
-```python3 main.py tree_4L.txt L500 L1000 L10000 name_experiment```
+⚠️ Note that in this case, sequence lengths are preceeded by an $L$.
 
-⚠️
 
 
 
