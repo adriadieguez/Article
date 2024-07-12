@@ -6,7 +6,7 @@
 
 Our program takes as input a tree in the Newick format (with nodes of any degree) with annotated branch lengths. Moreover, other arguments must be given: the user has two possible options depending on which arguments are chosen,
 
-**Option 1:** <span style="color:blue"> **Generate $N$ FASTA files with alignments of some <em>blue</em> length $L$ given a tree in a newick format, providing an experiment name** </span>
+**Option 1:** <span style="color:blue"> Generate $N$ FASTA files with alignments of length $L$ given a tree in a newick format, providing an experiment name </span>.
 
 For example, for $N = 5$ and $L = 1000$;
 ```python3 main.py tree_4L.txt 5 1000 name_experiment```
